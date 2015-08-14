@@ -5,6 +5,12 @@ import time
 
 print 'PiBot initialisation code routine...'
 
+# What Raspberry Pi revision are we running?  
+GPIO.RPI_REVISION     #  0 = Compute Module, 1 = Rev 1, 2 = Rev 2, 3 = Model B+  
+  
+# What version of RPi.GPIO are we running?  
+GPIO.VERSION   
+
 GPIO.setmode(GPIO.BOARD)
 
 GPIO.setup(7, GPIO.OUT)
