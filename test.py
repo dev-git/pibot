@@ -3,6 +3,8 @@
 import RPi.GPIO as GPIO
 import time
 
+print 'PiBot initialisation code routine...'
+
 GPIO.setmode(GPIO.BOARD)
 
 GPIO.setup(7, GPIO.OUT)
@@ -27,3 +29,5 @@ time.sleep(1)
 GPIO.output(15, False)
 
 GPIO.cleanup()
+
+print 'PiBot initialisation complete.'
