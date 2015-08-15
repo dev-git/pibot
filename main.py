@@ -2,14 +2,15 @@
 
 import RPi.GPIO as GPIO
 import time
-import pygame
+import sys, tty, termios
+#import pygame
 
 print 'PiBot initialisation code routine...'
 
-pygame.init()
+#pygame.init()
 
 # to spam the pygame.KEYDOWN event every 100ms while key being pressed
-pygame.key.set_repeat(100, 100)
+#pygame.key.set_repeat(100, 100)
 
 GPIO.setmode(GPIO.BOARD)
 
@@ -18,23 +19,39 @@ GPIO.setup(11, GPIO.OUT)
 GPIO.setup(13, GPIO.OUT)
 GPIO.setup(15, GPIO.OUT)
 
+# The getch method can determine which key has been pressed
+# by the user on the keyboard by accessing the system files
+# It will then return the pressed key as a variable
+def getch():
+    fd = sys.stdin.fileno()
+    old_settings = termios.tcgetattr(fd)
+    try:
+        tty.setraw(sys.stdin.fileno())
+        ch = sys.stdin.read(1)
+    finally:
+        termios.tcsetattr(fd, termios.TCSADRAIN, old_settings)
+    return ch
+
 RUNNING = True
 
 try:
    while RUNNING:
-    for event in pygame.event.get():
-        if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_w:
-                print 'go forward'
-            if event.key == pygame.K_s:
-                print 'go backward'
-        if event.type == pygame.KEYUP:
-            print 'stop'
+    # Keyboard character retrieval method is called and saved
+    # into variable
+    char = getch()
+
+    # The car will drive forward when the "w" key is pressed
+    if(char == "w"):
+      print 'forward'
+   
+    # The car will reverse when the "s" key is pressed
+    if(char == "s"):
+      print 'back'
 
 # If CTRL+C is pressed the main loop is broken
 except KeyboardInterrupt:
    running = False
-   print "\nQuitting Candle Light"
+   print "\nQuitting robot"
 
 # Actions under 'finally' will always be called, regardless of
 # what stopped the program (be it an error or an interrupt)
