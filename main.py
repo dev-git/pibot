@@ -4,7 +4,9 @@ import RPi.GPIO as GPIO
 import time
 import sys, tty, termios
 
-print 'PiBot initialisation code routine...'
+print '\nHi Murphy, I am PiBot, your very own robot.'
+print '\nMy controls are "w"=forward; "s"=reverse; "a"=left; "d"=right and "q"=quit.'
+print '\nI hope you have lots of fun...'
 
 GPIO.setmode(GPIO.BOARD)
 
@@ -36,17 +38,45 @@ try:
 
     if(char == "q"):
         RUNNING = False
-        print "\nQuitting robot"
+        print "\nPiBot is going offline."
         break
         
     # The car will drive forward when the "w" key is pressed
     if(char == "w"):
       print 'forward'
+      GPIO.output(7, True)
+      GPIO.output(13, True)
+      time.sleep(1)
+      GPIO.output(7, False)
+      GPIO.output(13, False)
    
     # The car will reverse when the "s" key is pressed
     if(char == "s"):
       print 'back'
+      GPIO.output(11, True)
+      GPIO.output(15, True)
+      time.sleep(1)
+      GPIO.output(11, False)
+      GPIO.output(15, False)
 
+    # The car will drive left when the "a" key is pressed
+    if(char == "a"):
+      print 'left'
+      GPIO.output(7, True)
+      time.sleep(1)
+      GPIO.output(7, False)
+      
+    # The car will drive right when the "d" key is pressed
+    if(char == "d"):
+      print 'back'
+      GPIO.output(11, True)
+      time.sleep(1)
+      GPIO.output(11, False)
+
+    # The keyboard character variable will be set to blank, ready
+    # to save the next key that is pressed
+    char = ""      
+      
 # If CTRL+C is pressed the main loop is broken
 except KeyboardInterrupt:
    RUNNING = False
@@ -57,25 +87,8 @@ except KeyboardInterrupt:
 finally:
    # Stop and cleanup to finish cleanly so the pins
    # are available to be used again
-   #pwm.stop()
    GPIO.cleanup()
    
-#GPIO.output(7, True)
-#time.sleep(1)
-#GPIO.output(7, False)
+GPIO.cleanup()
 
-#GPIO.output(11, True)
-#time.sleep(1)
-#GPIO.output(11, False)
-
-#GPIO.output(13, True)
-#time.sleep(1)
-#GPIO.output(13, False)
-
-#GPIO.output(15, True)
-#time.sleep(1)
-#GPIO.output(15, False)
-
-#GPIO.cleanup()
-
-print 'PiBot initialisation complete.'
+print "\nPiBot is going offline..."
