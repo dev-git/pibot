@@ -40,6 +40,10 @@ try:
     # into variable
     char = getch()
 
+    if(char == "q"):
+        running = False
+        print "\nQuitting robot"
+        
     # The car will drive forward when the "w" key is pressed
     if(char == "w"):
       print 'forward'
