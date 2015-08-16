@@ -5,8 +5,8 @@ import time
 import sys, tty, termios
 
 print '\nHi Murphy, I am PiBot, your very own robot.'
-print '\nMy controls are "w"=forward; "s"=reverse; "a"=left; "d"=right and "q"=quit.'
-print '\nI hope you have lots of fun...'
+print 'My controls are "w"=forward; "s"=reverse; "a"=left; "d"=right and "q"=quit.'
+print 'I hope you have lots of fun...'
 
 GPIO.setmode(GPIO.BOARD)
 
@@ -68,7 +68,7 @@ try:
       
     # The car will drive right when the "d" key is pressed
     if(char == "d"):
-      print 'back'
+      print 'right'
       GPIO.output(11, True)
       time.sleep(1)
       GPIO.output(11, False)
@@ -89,6 +89,5 @@ finally:
    # are available to be used again
    GPIO.cleanup()
    
-GPIO.cleanup()
-
 print "\nPiBot is going offline..."
+GPIO.cleanup()
