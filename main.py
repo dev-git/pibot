@@ -38,7 +38,7 @@ try:
 
     if(char == "q"):
         RUNNING = False
-        print "\nPiBot is going offline."
+        #print "\nPiBot is going offline."
         break
         
     # The car will drive forward when the "w" key is pressed
