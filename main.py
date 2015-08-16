@@ -3,14 +3,8 @@
 import RPi.GPIO as GPIO
 import time
 import sys, tty, termios
-#import pygame
 
 print 'PiBot initialisation code routine...'
-
-#pygame.init()
-
-# to spam the pygame.KEYDOWN event every 100ms while key being pressed
-#pygame.key.set_repeat(100, 100)
 
 GPIO.setmode(GPIO.BOARD)
 
@@ -41,8 +35,9 @@ try:
     char = getch()
 
     if(char == "q"):
-        running = False
+        RUNNING = False
         print "\nQuitting robot"
+        break
         
     # The car will drive forward when the "w" key is pressed
     if(char == "w"):
@@ -54,7 +49,7 @@ try:
 
 # If CTRL+C is pressed the main loop is broken
 except KeyboardInterrupt:
-   running = False
+   RUNNING = False
    print "\nQuitting robot"
 
 # Actions under 'finally' will always be called, regardless of
