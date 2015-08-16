@@ -90,4 +90,4 @@ finally:
    GPIO.cleanup()
    
 print "\nPiBot is going offline..."
-GPIO.cleanup()
+#GPIO.cleanup()
