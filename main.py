@@ -62,16 +62,16 @@ try:
     # The car will drive left when the "a" key is pressed
     if(char == "a"):
       print 'left'
-      GPIO.output(11, True)
+      GPIO.output(13, True)
       time.sleep(1)
-      GPIO.output(11, False)
+      GPIO.output(13, False)
       
     # The car will drive right when the "d" key is pressed
     if(char == "d"):
       print 'right'
-      GPIO.output(13, True)
+      GPIO.output(11, True)
       time.sleep(1)
-      GPIO.output(13, False)
+      GPIO.output(11, False)
 
     # The keyboard character variable will be set to blank, ready
     # to save the next key that is pressed
