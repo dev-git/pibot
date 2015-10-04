@@ -1,0 +1,23 @@
+# Setup file 
+
+network={
+	ssid="PINET"
+	psk="PINET101"
+	key_mgmt=WPA-PSK
+}
+
+iface wlan0 inet static
+address 192.168.1.120
+netmask 255.255.255.0
+broadcast 192.168.1.255
+gateway 192.168.1.1
+
+ifconfig
+sudo iwlist wlan0 scan
+sudo leafpad /etc/network/interfaces
+sudo leafpad /etc/wpa_supplicant/wpa_supplicant.conf
+sudo ifdown wlan0
+sudo ifup wlan0
+ping www.google.co.nz
+ping www.github.com
+git clone https://github.com/dev-git/pibot.git
