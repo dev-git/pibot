@@ -16,13 +16,17 @@ GPIO.setup(11, GPIO.OUT)
 GPIO.setup(13, GPIO.OUT)
 GPIO.setup(15, GPIO.OUT)
 
+print 'Turn on red light\n'
 GPIO.output(11, True)
 time.sleep(2)
 GPIO.output(11, False)
 
+print 'Turn on orange light\n'    
 GPIO.output(13, True)
 time.sleep(2)
 GPIO.output(13, False)
+
+print 'Turn on green light\n' 
 
 GPIO.output(15, True)
 time.sleep(2)
