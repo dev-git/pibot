@@ -31,12 +31,12 @@ try:
    while RUNNING:
     # Keyboard character retrieval method is called and saved
     # into variable
-    char = getch()
+    #char = getch()
 
-    if(char == "x"):
-        RUNNING = False
+    #if(char == "x"):
+    #    RUNNING = False
         #print "\nPiBot is going offline."
-        break
+    #    break
     
     print 'Turn on red light\n'
     GPIO.output(11, True)
@@ -55,7 +55,7 @@ try:
 
     # The keyboard character variable will be set to blank, ready
     # to save the next key that is pressed
-    char = ""      
+    #char = ""      
       
 # If CTRL+C is pressed the main loop is broken
 except KeyboardInterrupt:
