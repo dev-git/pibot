@@ -29,6 +29,7 @@ try:
     print 'Turn on green light\n'    
     GPIO.output(15, True)
     time.sleep(2)
+    GPIO.output(15, False)
 
 # If CTRL+C is pressed the main loop is broken
 except KeyboardInterrupt:
