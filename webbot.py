@@ -207,17 +207,24 @@ class WebServer(SocketServer.BaseRequestHandler):
             # PBR.SetMotor1(-driveLeft)
             # PBR.SetMotor2(driveRight)
             
+            # forward
+            GPIO.output(11, True)
+            GPIO.output(13, True)
+            time.sleep(1)
+            GPIO.output(11, False)
+            GPIO.output(13, False)
+            
             # left
-            if (driveLeft > 0)
-                GPIO.output(13, True)
-                time.sleep(1)
-                GPIO.output(13, False)
+            #if (driveLeft > 0)
+            #   GPIO.output(13, True)
+            #    time.sleep(1)
+            #    GPIO.output(13, False)
             
             # right
-            if (driveRight > 0)
-                GPIO.output(13, True)
-                time.sleep(1)
-                GPIO.output(13, False)
+            #if (driveRight > 0)
+            #    GPIO.output(13, True)
+            #    time.sleep(1)
+            #    GPIO.output(13, False)
         elif getPath.startswith('/photo'):
             # Save camera photo
             lockFrame.acquire()
