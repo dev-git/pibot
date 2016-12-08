@@ -69,7 +69,7 @@ class Watchdog(threading.Thread):
                     # Timed out
                     print 'Timed out...'
                     timedOut = True
-                    PBR.MotorsOff()
+                    # PBR.MotorsOff()
 
 # Image stream processing thread
 class StreamProcessor(threading.Thread):
@@ -159,7 +159,7 @@ class WebServer(SocketServer.BaseRequestHandler):
             httpText += 'Speeds: 0 %, 0 %'
             httpText += '</center></body></html>'
             self.send(httpText)
-            PBR.MotorsOff()
+            # PBR.MotorsOff()
         elif getPath.startswith('/set/'):
             # Motor power setting: /set/driveLeft/driveRight
             parts = getPath.split('/')
@@ -195,8 +195,8 @@ class WebServer(SocketServer.BaseRequestHandler):
             # Set the outputs
             driveLeft *= maxPower
             driveRight *= maxPower
-            PBR.SetMotor1(-driveLeft)
-            PBR.SetMotor2(driveRight)
+            # PBR.SetMotor1(-driveLeft)
+            # PBR.SetMotor2(driveRight)
         elif getPath.startswith('/photo'):
             # Save camera photo
             lockFrame.acquire()
@@ -357,7 +357,7 @@ except KeyboardInterrupt:
     print '\nUser shutdown'
 finally:
     # Turn the motors off under all scenarios
-    #PBR.MotorsOff()
+    # PBR.MotorsOff()
     print 'Motors off'
 # Tell each thread to stop, and wait for them to end
 running = False
@@ -367,5 +367,5 @@ watchdog.terminated = True
 processor.join()
 watchdog.join()
 del camera
-PBR.SetLed(True)
+# PBR.SetLed(True)
 print 'Web-server terminated.'
