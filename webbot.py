@@ -4,6 +4,7 @@
 # Creates a web-page interface for 4Borg
 
 # Import library functions we need
+import RPi.GPIO as GPIO
 import time
 import sys
 import threading
@@ -12,6 +13,13 @@ import picamera
 import picamera.array
 import cv2
 import datetime
+
+GPIO.setmode(GPIO.BOARD)
+
+GPIO.setup(7, GPIO.OUT)
+GPIO.setup(11, GPIO.OUT)
+GPIO.setup(13, GPIO.OUT)
+GPIO.setup(15, GPIO.OUT)
 
 # Settings for the web-page
 webPort = 80                            # Port number for the web-page, 80 is what web-pages normally use
@@ -181,6 +189,7 @@ class WebServer(SocketServer.BaseRequestHandler):
                 driveRight = -1
             elif driveRight > 1:
                 driveRight = 1
+                
             if driveLeft < -1:
                 driveLeft = -1
             elif driveLeft > 1:
@@ -197,6 +206,18 @@ class WebServer(SocketServer.BaseRequestHandler):
             driveRight *= maxPower
             # PBR.SetMotor1(-driveLeft)
             # PBR.SetMotor2(driveRight)
+            
+            # left
+            if (driveLeft > 0)
+                GPIO.output(13, True)
+                time.sleep(1)
+                GPIO.output(13, False)
+            
+            # right
+            if (driveRight > 0)
+                GPIO.output(13, True)
+                time.sleep(1)
+                GPIO.output(13, False)
         elif getPath.startswith('/photo'):
             # Save camera photo
             lockFrame.acquire()
