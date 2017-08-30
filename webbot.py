@@ -211,7 +211,7 @@ class WebServer(SocketServer.BaseRequestHandler):
             # PBR.SetMotor1(-driveLeft)
             # PBR.SetMotor2(driveRight)
             
-            if (driveLeft = 1 and driveRight = 1):
+            if (driveLeft == 1 and driveRight == 1):
                 # forward
                 print 'Going forward...'
                 GPIO.output(11, True)
@@ -219,13 +219,13 @@ class WebServer(SocketServer.BaseRequestHandler):
                 time.sleep(1)
                 GPIO.output(11, False)
                 GPIO.output(13, False)
-            elseif (driveLeft = 1 and driveRight = -1):     
+            elseif (driveLeft == 1 and driveRight == -1):     
                 # Left
                 print 'Turning left...'
                 GPIO.output(13, True)
                 time.sleep(1)
                 GPIO.output(13, False)
-            elseif (driveLeft = -1 and driveRight = 1): 
+            elseif (driveLeft == -1 and driveRight == 1): 
                 print 'Turning right...'
                 GPIO.output(11, True)
                 time.sleep(1)
