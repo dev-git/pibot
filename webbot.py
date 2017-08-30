@@ -206,8 +206,8 @@ class WebServer(SocketServer.BaseRequestHandler):
             httpText += '</center></body></html>'
             self.send(httpText)
             # Set the outputs
-            driveLeft *= maxPower
-            driveRight *= maxPower
+            #driveLeft *= maxPower
+            #driveRight *= maxPower
             # PBR.SetMotor1(-driveLeft)
             # PBR.SetMotor2(driveRight)
             
