@@ -14,6 +14,7 @@ import picamera.array
 import cv2
 import datetime
 
+GPIO.setwarnings(False) 
 GPIO.setmode(GPIO.BOARD)
 
 GPIO.setup(7, GPIO.OUT)
