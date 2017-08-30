@@ -42,7 +42,7 @@ running = True
 
 
 # Power settings
-voltageIn = 8.4                         # Total battery voltage to the PicoBorg Reverse (change to 9V if using a non-rechargeable battery)
+voltageIn = 6.0                         # Total battery voltage to the PicoBorg Reverse (change to 9V if using a non-rechargeable battery)
 voltageOut = 6.0                        # Maximum motor voltage
 
 # Setup the power limits
@@ -175,6 +175,9 @@ class WebServer(SocketServer.BaseRequestHandler):
             # Get the power levels
             if len(parts) >= 4:
                 try:
+                    print 'Parts...'
+                    print parts[2]
+                    print parts[3]
                     driveLeft = float(parts[2])
                     driveRight = float(parts[3])
                 except:
@@ -208,13 +211,28 @@ class WebServer(SocketServer.BaseRequestHandler):
             # PBR.SetMotor1(-driveLeft)
             # PBR.SetMotor2(driveRight)
             
-            # forward
-            GPIO.output(11, True)
-            GPIO.output(13, True)
-            time.sleep(1)
-            GPIO.output(11, False)
-            GPIO.output(13, False)
-            
+            if (driveLeft = 1 and driveRight = 1):
+                # forward
+                print 'Going forward...'
+                GPIO.output(11, True)
+                GPIO.output(13, True)
+                time.sleep(1)
+                GPIO.output(11, False)
+                GPIO.output(13, False)
+            elseif (driveLeft = 1 and driveRight = -1):     
+                # Left
+                print 'Turning left...'
+                GPIO.output(13, True)
+                time.sleep(1)
+                GPIO.output(13, False)
+            elseif (driveLeft = -1 and driveRight = 1): 
+                print 'Turning right...'
+                GPIO.output(11, True)
+                time.sleep(1)
+                GPIO.output(11, False)
+            else:
+                # Reverse
+                print 'Reversing...'
             # left
             #if (driveLeft > 0)
             #   GPIO.output(13, True)
