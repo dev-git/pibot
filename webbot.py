@@ -14,7 +14,7 @@ import picamera.array
 import cv2
 import datetime
 
-GPIO.setwarnings(False) 
+#GPIO.setwarnings(False) 
 GPIO.setmode(GPIO.BOARD)
 
 GPIO.setup(7, GPIO.OUT)
@@ -387,6 +387,7 @@ except KeyboardInterrupt:
 finally:
     # Turn the motors off under all scenarios
     # PBR.MotorsOff()
+    GPIO.cleanup() 
     print 'Motors off'
 # Tell each thread to stop, and wait for them to end
 running = False
