@@ -175,9 +175,9 @@ class WebServer(SocketServer.BaseRequestHandler):
             # Get the power levels
             if len(parts) >= 4:
                 try:
-                    print 'Parts...'
-                    print parts[2]
-                    print parts[3]
+                    #print 'Parts...'
+                    #print parts[2]
+                    #print parts[3]
                     driveLeft = float(parts[2])
                     driveRight = float(parts[3])
                 except:
@@ -230,20 +230,17 @@ class WebServer(SocketServer.BaseRequestHandler):
                 GPIO.output(11, True)
                 time.sleep(1)
                 GPIO.output(11, False)                
-            else:
+            elif (driveLeft == -1 and driveRight == -1): 
                 # Reverse
                 print 'Reversing...'
-            # left
-            #if (driveLeft > 0)
-            #   GPIO.output(13, True)
-            #    time.sleep(1)
-            #    GPIO.output(13, False)
-            
-            # right
-            #if (driveRight > 0)
-            #    GPIO.output(13, True)
-            #    time.sleep(1)
-            #    GPIO.output(13, False)
+                GPIO.output(7, True)
+                GPIO.output(15, True)
+                time.sleep(1)
+                GPIO.output(7, False)
+                GPIO.output(15, False)
+            else:
+                print 'Oops'
+
         elif getPath.startswith('/photo'):
             # Save camera photo
             lockFrame.acquire()
@@ -294,7 +291,7 @@ class WebServer(SocketServer.BaseRequestHandler):
             httpText += '<button onclick="Drive(-1,1)" style="width:200px;height:100px;"><b>Spin Right</b></button>\n'
             httpText += '<br /><br />\n'
             #httpText += '<button onclick="Drive(0,1)" style="width:200px;height:100px;"><b>Turn Left</b></button>\n'
-            #httpText += '<button onclick="Drive(-1,-1)" style="width:200px;height:100px;"><b>Reverse</b></button>\n'
+            httpText += '<button onclick="Drive(-1,-1)" style="width:200px;height:100px;"><b>Reverse</b></button>\n'
             #httpText += '<button onclick="Drive(1,0)" style="width:200px;height:100px;"><b>Turn Right</b></button>\n'
             #httpText += '<br /><br />\n'
             httpText += '<button onclick="Off()" style="width:200px;height:100px;"><b>Stop</b></button>\n'
