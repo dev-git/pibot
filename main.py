@@ -46,7 +46,7 @@ try:
       print 'forward'
       GPIO.output(11, True)
       GPIO.output(13, True)
-      time.sleep(1)
+      time.sleep(0.5)
       GPIO.output(11, False)
       GPIO.output(13, False)
    
@@ -55,7 +55,7 @@ try:
       print 'back'
       GPIO.output(7, True)
       GPIO.output(15, True)
-      time.sleep(1)
+      time.sleep(0.5)
       GPIO.output(7, False)
       GPIO.output(15, False)
 
@@ -63,14 +63,14 @@ try:
     if(char == "a"):
       print 'left'
       GPIO.output(13, True)
-      time.sleep(1)
+      time.sleep(0.5)
       GPIO.output(13, False)
       
     # The car will drive right when the "d" key is pressed
     if(char == "d"):
       print 'right'
       GPIO.output(11, True)
-      time.sleep(1)
+      time.sleep(0.5)
       GPIO.output(11, False)
 
     # The keyboard character variable will be set to blank, ready
