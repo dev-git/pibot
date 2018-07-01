@@ -283,7 +283,7 @@ class WebServer(SocketServer.BaseRequestHandler):
             httpText += '//--></script>\n'
             httpText += '</head>\n'
             httpText += '<body>\n'
-            httpText += '<iframe src="/stream" width="100%" height="500" frameborder="0"></iframe>\n'
+            #httpText += '<iframe src="/stream" width="100%" height="500" frameborder="0"></iframe>\n'
             httpText += '<iframe id="setDrive" src="/off" width="100%" height="50" frameborder="0"></iframe>\n'
             httpText += '<center>\n'
             httpText += '<button onclick="Drive(1,-1)" style="width:200px;height:100px;"><b>Spin Left</b></button>\n'
@@ -341,24 +341,6 @@ class WebServer(SocketServer.BaseRequestHandler):
             httpText += '<br /><br />\n'
             httpText += '<input id="speed" type="range" min="0" max="100" value="100" style="width:600px" />\n'
             httpText += '</center>\n'
-            httpText += '</body>\n'
-            httpText += '</html>\n'
-            self.send(httpText)
-        elif getPath == '/stream':
-            # Streaming frame, set a delayed refresh
-            displayDelay = int(1000 / displayRate)
-            httpText = '<html>\n'
-            httpText += '<head>\n'
-            httpText += '<script language="JavaScript"><!--\n'
-            httpText += 'function refreshImage() {\n'
-            httpText += ' if (!document.images) return;\n'
-            httpText += ' document.images["rpicam"].src = "cam.jpg?" + Math.random();\n'
-            httpText += ' setTimeout("refreshImage()", %d);\n' % (displayDelay)
-            httpText += '}\n'
-            httpText += '//--></script>\n'
-            httpText += '</head>\n'
-            httpText += '<body onLoad="setTimeout(\'refreshImage()\', %d)">\n' % (displayDelay)
-            httpText += '<center><img src="/cam.jpg" style="width:640;height:480;" name="rpicam" /></center>\n'
             httpText += '</body>\n'
             httpText += '</html>\n'
             self.send(httpText)
