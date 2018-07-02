@@ -388,7 +388,7 @@ finally:
     print 'Motors off'
 # Tell each thread to stop, and wait for them to end
 running = False
-captureThread.join()
+#captureThread.join()
 processor.terminated = True
 watchdog.terminated = True
 processor.join()
