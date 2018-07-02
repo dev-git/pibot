@@ -223,12 +223,12 @@ class WebServer(SocketServer.BaseRequestHandler):
                 # Left
                 print 'Turning left...'
                 GPIO.output(13, True)
-                time.sleep(1)
+                time.sleep(0.2)
                 GPIO.output(13, False)
             elif (driveLeft == -1 and driveRight == 1): 
                 print 'Turning right...'
                 GPIO.output(11, True)
-                time.sleep(1)
+                time.sleep(0.2)
                 GPIO.output(11, False)                
             elif (driveLeft == -1 and driveRight == -1): 
                 # Reverse
