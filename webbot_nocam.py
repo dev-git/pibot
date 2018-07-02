@@ -223,12 +223,12 @@ class WebServer(SocketServer.BaseRequestHandler):
                 # Left
                 print 'Turning left...'
                 GPIO.output(13, True)
-                time.sleep(0.2)
+                time.sleep(0.1)
                 GPIO.output(13, False)
             elif (driveLeft == -1 and driveRight == 1): 
                 print 'Turning right...'
                 GPIO.output(11, True)
-                time.sleep(0.2)
+                time.sleep(0.1)
                 GPIO.output(11, False)                
             elif (driveLeft == -1 and driveRight == -1): 
                 # Reverse
@@ -286,19 +286,19 @@ class WebServer(SocketServer.BaseRequestHandler):
             #httpText += '<iframe src="/stream" width="100%" height="500" frameborder="0"></iframe>\n'
             httpText += '<iframe id="setDrive" src="/off" width="100%" height="50" frameborder="0"></iframe>\n'
             httpText += '<center>\n'
-            httpText += '<button onclick="Drive(1,-1)" style="width:200px;height:100px;"><b>Spin Left</b></button>\n'
+            httpText += '<button onclick="Drive(-1,1)" style="width:200px;height:100px;"><b>Spin Left</b></button>\n'
             httpText += '<button onclick="Drive(1,1)" style="width:200px;height:100px;"><b>Forward</b></button>\n'
-            httpText += '<button onclick="Drive(-1,1)" style="width:200px;height:100px;"><b>Spin Right</b></button>\n'
+            httpText += '<button onclick="Drive(1,-1)" style="width:200px;height:100px;"><b>Spin Right</b></button>\n'
             httpText += '<br /><br />\n'
             #httpText += '<button onclick="Drive(0,1)" style="width:200px;height:100px;"><b>Turn Left</b></button>\n'
             httpText += '<button onclick="Drive(-1,-1)" style="width:200px;height:100px;"><b>Reverse</b></button>\n'
             #httpText += '<button onclick="Drive(1,0)" style="width:200px;height:100px;"><b>Turn Right</b></button>\n'
             #httpText += '<br /><br />\n'
-            httpText += '<button onclick="Off()" style="width:200px;height:100px;"><b>Stop</b></button>\n'
+            #httpText += '<button onclick="Off()" style="width:200px;height:100px;"><b>Stop</b></button>\n'
             httpText += '<br /><br />\n'
-            httpText += '<button onclick="Photo()" style="width:200px;height:100px;"><b>Save Photo</b></button>\n'
+            #httpText += '<button onclick="Photo()" style="width:200px;height:100px;"><b>Save Photo</b></button>\n'
             httpText += '<br /><br />\n'
-            httpText += '<input id="speed" type="range" min="0" max="100" value="100" style="width:600px" />\n'
+            #httpText += '<input id="speed" type="range" min="0" max="100" value="100" style="width:600px" />\n'
             httpText += '</center>\n'
             httpText += '</body>\n'
             httpText += '</html>\n'
