@@ -9,8 +9,8 @@ import time
 import sys
 import threading
 import SocketServer
-import picamera
-import picamera.array
+#import picamera
+#import picamera.array
 import cv2
 import datetime
 
@@ -84,7 +84,7 @@ class Watchdog(threading.Thread):
 class StreamProcessor(threading.Thread):
     def __init__(self):
         super(StreamProcessor, self).__init__()
-        self.stream = picamera.array.PiRGBArray(camera)
+        #self.stream = picamera.array.PiRGBArray(camera)
         self.event = threading.Event()
         self.terminated = False
         self.start()
@@ -353,21 +353,21 @@ class WebServer(SocketServer.BaseRequestHandler):
 
 
 # Create the image buffer frame
-lastFrame = None
-lockFrame = threading.Lock()
+#lastFrame = None
+#lockFrame = threading.Lock()
 
 # Startup sequence
-print 'Setup camera'
-camera = picamera.PiCamera()
-camera.resolution = (imageWidth, imageHeight)
-camera.framerate = frameRate
+#print 'Setup camera'
+#camera = picamera.PiCamera()
+#camera.resolution = (imageWidth, imageHeight)
+#camera.framerate = frameRate
 
 print 'Setup the stream processing thread'
 processor = StreamProcessor()
 
 print 'Wait ...'
 time.sleep(2)
-captureThread = ImageCapture()
+#captureThread = ImageCapture()
 
 print 'Setup the watchdog'
 watchdog = Watchdog()
@@ -393,6 +393,6 @@ processor.terminated = True
 watchdog.terminated = True
 processor.join()
 watchdog.join()
-del camera
+#del camera
 # PBR.SetLed(True)
 print 'Web-server terminated.'
