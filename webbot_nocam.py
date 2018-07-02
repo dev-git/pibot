@@ -298,7 +298,7 @@ class WebServer(SocketServer.BaseRequestHandler):
             httpText += '<br /><br />\n'
             #httpText += '<button onclick="Photo()" style="width:200px;height:100px;"><b>Save Photo</b></button>\n'
             httpText += '<br /><br />\n'
-            #httpText += '<input id="speed" type="range" min="0" max="100" value="100" style="width:600px" />\n'
+            httpText += '<input id="speed" type="range" min="0" max="100" value="100" style="width:600px" />\n'
             httpText += '</center>\n'
             httpText += '</body>\n'
             httpText += '</html>\n'
